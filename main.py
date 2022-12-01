@@ -17,6 +17,7 @@ def upload_file():
         f = request.files['file']
         print(secure_filename("./data/" + f.filename))
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename))
+        # print(filepath)
         output_filepath = filepath.split(".csv")[0] + "_prediction.csv"
         f.save(filepath)
         attrition.predict_attrition(filepath, output_filepath)
